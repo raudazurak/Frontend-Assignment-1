@@ -4,25 +4,71 @@ import 'bootstrap'
 
 //Fetch from json
 
+let
+  chosencategoryFilter = 'all',
+  chosenSortOption,
+  categories = [];
+
 let books = await (await fetch('./books.json')).json()
 
-displayBooks()
+getCategories()
 categoryFilters()
+sortingOptions()
+displayBooks()
+
+function getCategories() {
+    let withDuplicates = books.map(book => book.category);
+    categories = [...new Set(withDuplicates)];
+    categories.sort();}
+
 
 function categoryFilters() {
     document.querySelector('.filters').innerHTML = `
-      <label><span>Filter by hobbies:</span>
-        <select class="hobbyFilter">
+      <label><span>Filter by categories</span>
+        <select class="categoryFilter">
           <option>all</option>
-          <option>UX</option>
-          <option>CSS</option>
-          <option>HTML</option> 
+          ${categories.map(category => `<option>${category}</option>`).join('')}   
         </select>
       </label>
     `;
 
+    document.querySelector('.categoryFilter').addEventListener(
+        'change',
+        event => {
+          chosencategoryFilter = event.target.value;
+          filterEffect(chosencategoryFilter);
+          displayBooks();
+        }
+      );
+
 }
 
+function sortingOptions() {
+    document.querySelector('.sortOptions').innerHTML = `
+      <label><span>sort by</span>
+        <select class="sortOption">
+          <option>Title</option>
+          <option>Price</option>
+          <option>Author</option>
+        </select>
+      </label>
+      <button>ascending</button>
+      <button>descending</button>
+
+    `;
+
+}
+
+ function filterEffect(chosencategoryFilter){
+    if(chosencategoryFilter === 'all'){
+        console.log("me")
+    }else if(chosencategoryFilter === 'UX' || chosencategoryFilter === 'CSS'
+    || chosencategoryFilter === 'HTML' || chosencategoryFilter === 'JavaScript'
+    ){
+        console.log(books.filter(({category}) => chosencategoryFilter === category))
+    }
+    
+ }
 //display all
 
 //making the filters
