@@ -1,0 +1,44 @@
+[
+    {
+      "id": 1,
+      "title": "Introduction to html",
+      "author": "John Author",
+      "description": "Lorem ipsum / or your text",
+      "category": "UX",
+      "price": 150
+    },
+
+    {
+        "id": 2,
+        "title": "Introduction to CSS",
+        "author": "Some Alex",
+        "description": "Lorem ipsum / or your text",
+        "category": "CSS",
+        "price": 150
+    },
+    {
+        "id": 3,
+        "title": "Introduction to JavaScript",
+        "author": "Someil Creed",
+        "description": "Lorem ipsum / or your text",
+        "category": "UX",
+        "price": 300
+      },
+      {
+        "id": 4,
+        "title": "Book of life",
+        "author": "Han Rew",
+        "description": "Lorem ipsum / or your text",
+        "category": "UX",
+        "price": 200
+      },
+      {
+        "id": 5,
+        "title": "Book of Fun",
+        "author": "Some Johon dory",
+        "description": "Lorem ipsum / or your text",
+        "category": "UX",
+        "price": 140
+      }
+    
+  ]
