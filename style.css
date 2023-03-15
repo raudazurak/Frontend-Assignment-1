@@ -1,5 +1,54 @@
+
 body{
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   
+  
 }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: rgb(244, 241, 241);
+}
+
+main{
+  margin: 0 auto;
+}
+
+.book{
+  margin: 5px;
+  display: block;
+  background-color: white;
+  border-radius: 10px;
+  border: solid 0.1px;
+
+  max-width: 700px;
+
+
+
+
+}
+
+img{width: 100%;
+
+}
+
+.book-img{
+  margin: 5px 20px 10px 0;
+  width: 40%;
+  border: 1px solid black;
+}
+
+
+.disc{
+  display: inline-block;
+}
+
+.buy-btn{
+  font-display: inline-block;
+  align-items: baseline;
+}
+
+
 
