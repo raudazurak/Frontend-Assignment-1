@@ -6,7 +6,8 @@ import 'bootstrap'
 
 let
   chosencategoryFilter = 'all',
-  chosenSortOption,
+  chosenSortOption,  
+  ratioChoice,
   categories = [];
 
 let books = await (await fetch('./books.json')).json()
@@ -14,6 +15,7 @@ let books = await (await fetch('./books.json')).json()
 getCategories()
 categoryFilters()
 sortingOptions()
+settingLevel()
 displayBooks()
 
 function getCategories() {
@@ -36,8 +38,7 @@ function categoryFilters() {
         'change',
         event => {
           chosencategoryFilter = event.target.value;
-          filterEffect(chosencategoryFilter);
-          displayBooks();
+          filterEffect();
         }
       );
 
@@ -52,20 +53,37 @@ function sortingOptions() {
           <option>Author</option>
         </select>
       </label>
-      <button>ascending</button>
-      <button>descending</button>
+      
+    `; 
 
-    `;
+   }
 
-}
+function settingLevel() {
+    document.querySelector('.level').innerHTML = `
+    <label>
+          <select class="choice">
+            <option>ascending</option>
+            <option>descending</option>
+          </select>
+        </label>
+    `}
 
- function filterEffect(chosencategoryFilter){
+
+ function filterEffect(){
     if(chosencategoryFilter === 'all'){
         console.log("me")
     }else if(chosencategoryFilter === 'UX' || chosencategoryFilter === 'CSS'
     || chosencategoryFilter === 'HTML' || chosencategoryFilter === 'JavaScript'
     ){
         console.log(books.filter(({category}) => chosencategoryFilter === category))
+        document.querySelector('.sortOption').addEventListener(
+          'change',
+          event => {
+            chosenSortOption = event.target.value;
+          console.log(chosenSortOption)
+          
+        })
+        
     }
     
  }
@@ -77,7 +95,9 @@ function sortingOptions() {
 
 function displayBooks(){
 
-let htmlArray = books.map(({title, author,price})=> `
+let htmlArray = books.map(({title, author,price})=>
+
+`
 <div class="book">
 <img class="book-img" src="https://source.unsplash.com/random/?wallpaper">
 <div class="disc">

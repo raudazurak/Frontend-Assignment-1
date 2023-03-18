@@ -49,6 +49,9 @@ img{width: 100%;
   font-display: inline-block;
   align-items: baseline;
 }
+.level{
+  display: inline-block;
+}
 
 
 
