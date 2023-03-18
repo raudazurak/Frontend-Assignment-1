@@ -8,7 +8,10 @@ let
   chosencategoryFilter = 'all',
   chosenSortOption,  
   ratioChoice,
+  ratio,
+  view,
   categories = [];
+  
 
 let books = await (await fetch('./books.json')).json()
 
@@ -83,6 +86,13 @@ function settingLevel() {
           console.log(chosenSortOption)
           
         })
+        document.querySelector('.level').addEventListener(
+          'change',
+          event => {
+            ratioChoice = event.target.value;
+          console.log(ratioChoice)
+          
+        })
         
     }
     
@@ -95,7 +105,7 @@ function settingLevel() {
 
 function displayBooks(){
 
-let htmlArray = books.map(({title, author,price})=>
+let htmlArray = books.map(({title, author,price,description})=>
 
 `
 <div class="book">
@@ -104,11 +114,34 @@ let htmlArray = books.map(({title, author,price})=>
 <h3>${title}</h3>
 <p>${author}</p>
 <p>${price} kr</p>
+<div class="info">${description}</div>
 </div>
 <button class="buy-btn">buy</button>
 </div>
-`);
+`
+);
 
 document.querySelector('.bigs').innerHTML=htmlArray.join('');
+var x = document.querySelectorAll('.info')
+var i
+for (i = 0; i < x.length; i++) {
+  x[i].style.display = "none";
 }
+
+document.querySelector('.disc').addEventListener(
+  'click',
+  event => {
+    if( document.querySelector('.info').style.display === "none"){
+      document.querySelector('.info').style.display = "block"
+    }else{
+      document.querySelector('.info').style.display = "none"
+    }
+
+})
+
+document.querySelector('.disc').addEventListener(
+  'click',
+  event => {
+
+})}
 
