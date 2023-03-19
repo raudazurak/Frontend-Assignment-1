@@ -3,9 +3,9 @@
       "id": 1,
       "title": "Introduction to html",
       "author": "John Author",
-      "description": "Lorem ipsum / or your text",
+      "description": "Lorem ipsum / or your text, Lets goo. Gee to the L.",
       "category": "UX",
-      "price": 150
+      "price": 110
     },
 
     {
@@ -16,22 +16,25 @@
         "category": "CSS",
         "price": 150
     },
+
     {
         "id": 3,
         "title": "Introduction to JavaScript",
         "author": "Someil Creed",
         "description": "Lorem ipsum / or your text",
-        "category": "UX",
+        "category": "HTML",
         "price": 300
       },
+
       {
         "id": 4,
         "title": "Book of life",
         "author": "Han Rew",
         "description": "Lorem ipsum / or your text",
-        "category": "UX",
+        "category": "JavaScript",
         "price": 200
       },
+
       {
         "id": 5,
         "title": "Book of Fun",
