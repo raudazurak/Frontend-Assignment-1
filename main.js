@@ -16,6 +16,7 @@ let
   
 
 let books = await (await fetch('./books.json')).json()
+let forAll = books
 
 getCategories()
 categoryFilters()
@@ -148,9 +149,26 @@ function sortedTitle(ratioChoice){
 
 }
 
+function sortedAuthor(ratioChoice){
+  if(ratioChoice === 'ascending'){
+  books.sort(({ author: aAuthor }, { author: bAuthor }) =>
+  aAuthor > bAuthor ? 1 : -1)
+  console.log(books)
+  return books
+  }else if(ratioChoice === 'descending'){
+  books.sort(({ author: aAuthor }, { author: bAuthor }) =>
+  aAuthor > bAuthor ? -1 : 1)
+  console.log(books)
+  return books
+}
+
+}
+
  function filterEffect(){
     if(chosencategoryFilter === 'all'){
-        console.log("me")
+      books = forAll
+      displayBooks()
+      console.log("me")
     }else if(chosencategoryFilter === 'UX' || chosencategoryFilter === 'CSS'
     || chosencategoryFilter === 'HTML' || chosencategoryFilter === 'JavaScript'
     ){
@@ -188,7 +206,7 @@ function sortedTitle(ratioChoice){
 
 function displayBooks(){
 
-let htmlArray = books.map(({title, author,price,description})=>
+let htmlArray = books.map(({ title, author,price,description})=>
 
 `
 <div class="book">
@@ -202,6 +220,7 @@ let htmlArray = books.map(({title, author,price,description})=>
 <button class="buy-btn">buy</button>
 </div>
 `
+
 );
 
 document.querySelector('.bigs').innerHTML=htmlArray.join('');
@@ -211,50 +230,78 @@ for (i = 0; i < x.length; i++) {
   x[i].style.display = "none";
 }
 
-document.querySelector('.disc').addEventListener(
-  'click',
-  event => {
-    if( document.querySelector('.info').style.display === "none"){
+//InfoDisplay()
+
+buying()
+}
+
+
+
+
+
+/*function InfoDisplay(){
+ var view = document.querySelectorAll('.disc')
+ for (let index = 0; index < view.length; index++) {
+  const element = array[index];
+  element.addEventListener('click', event => {
+    var toView = event.target
+    var view = toView.parentElement
+  if( document.querySelector('.info').
+    style.display === "none"){
       document.querySelector('.info').style.display = "block"
+      console.log( document.querySelectorAll('.info'))
+      
     }else{
       document.querySelector('.info').style.display = "none"
-    }})
+    }}
+  )
+  
+ }}*/
 
+ 
+ 
+ 
+    
+function buying(){
 
-document.querySelector('.buy-btn').addEventListener(
-  'click',
-  event => {
-    var addTitle = document.querySelector('h3').innerText
-    var twoValues = document.querySelectorAll('.disc p')
-    var addAuthor = twoValues[0].innerText
-    var addPrice = twoValues[1].innerText
-    addPrice = addPrice.split(' ')
-    var p = addPrice[0]
+  var products = document.querySelectorAll('.buy-btn')
+  for (let index = 0; index < products.length; index++) {
+    const element = products[index];
+    element.addEventListener('click', event => {
 
+      var button = event.target
+      var buyP = button.parentElement
+      console.log(button)
+      console.log(buyP)
     
     
-
-    let purchase = {
-      titleP: addTitle,
-      authorP: addAuthor,
-      priceP: Number(p)
-    }
-
-    cart.push(purchase)
-    console.log(purchase.priceP)
-    total += purchase.priceP
-    console.log(total)
-
-    console.log(cart)
-
-  })
-
-  /*for (let index = 0; index < cart.length; index++) {
-    let element = cart[index].priceP;
-    total += element
-    console.log(total)
-  }*/
-}
+      var addTitle = buyP.querySelector('h3').innerText
+      console.log(addTitle)
+      var twoValues = buyP.querySelectorAll('.disc p')
+      var addAuthor = twoValues[0].innerText
+      var addPrice = twoValues[1].innerText
+      addPrice = addPrice.split(' ')
+      var p = addPrice[0]
+      
+  
+      let purchase = {
+        titleP: addTitle,
+        authorP: addAuthor,
+        priceP: Number(p)
+      }
+  
+      cart.push(purchase)
+      console.log(purchase.priceP)
+      total += purchase.priceP
+      console.log(total)
+  
+      console.log(cart)
+  
+    })}
+  }
+    
+    
+ 
 
 
 
