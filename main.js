@@ -1,13 +1,14 @@
 import './style.css'
+import './style.scss'
 
-import 'bootstrap'
+//import 'bootstrap'
 
 //Fetch from json
 
 let
   chosencategoryFilter = 'all',
-  chosenSortOption,  
-  ratioChoice,
+  chosenSortOption = '',  
+  ratioChoice = '',
   total = 0,
   view,
   htmlArr,
@@ -18,12 +19,52 @@ let
 let books = await (await fetch('./books.json')).json()
 let forAll = books
 
+
+displayBooks()
+await showNavbar()
+await showFooter()
+
+searchGrab()
 getCategories()
 categoryFilters()
 sortingOptions()
-settingLevel()
 shoppingCart()
-displayBooks()
+settingLevel()
+
+
+
+
+
+async function showNavbar(){
+const fetchText = async url => ( await (await(fetch(url))).text())
+.replace(/<script.+?vite\/client.+?<\/script>/g, '')
+
+let src = '/nav.html'
+let html = await fetchText(src)
+
+document.querySelector('header').innerHTML  = html}
+
+async function showFooter(){
+  const fetchText = async url => ( await (await(fetch(url))).text())
+  .replace(/<script.+?vite\/client.+?<\/script>/g, '')
+  
+  let src = '/footer.html'
+  let html = await fetchText(src)
+  
+  document.querySelector('.foot').innerHTML  = html}
+  
+
+  function searchGrab(){
+
+    let finder = document.querySelector('.cherry').placeholder
+    console.log(finder)
+   let searcher =  document.querySelector('.btn-outline-success')
+   searcher.addEventListener('click', 
+   event =>{
+    
+   })
+  
+  }
 
 function getCategories() {
     let withDuplicates = books.map(book => book.category);
@@ -32,61 +73,78 @@ function getCategories() {
 
 
 function categoryFilters() {
-    document.querySelector('.filters').innerHTML = `
-      <label><span>Filter by categories</span>
-        <select class="categoryFilter">
-          <option>all</option>
-          ${categories.map(category => `<option>${category}</option>`).join('')}   
-        </select>
-      </label>
-    `;
+   
+  let pure = document.querySelector('.filters')
+  console.log(chosencategoryFilter)
 
-    document.querySelector('.categoryFilter').addEventListener(
-        'change',
-        event => {
-          chosencategoryFilter = event.target.value;
-          filterEffect();
-        }
-      );
+  console.log('ornaments')
+  pure.addEventListener('click',
+  event =>{
+    let crew = event.target
+    let cat = crew.innerText
+    chosencategoryFilter = cat
+    console.log(cat)
+    console.log('between')
+    filterEffect()
+    })
+  
+  
+  
 
 }
 
 function sortingOptions() {
-    document.querySelector('.sortOptions').innerHTML = `
-      <label><span>sort by</span>
-        <select class="sortOption">
-          <option>title</option>
-          <option>price</option>
-          <option>author</option>
-        </select>
-      </label>
-      
-    `; 
+  let sOpt = document.querySelector('.sortOptions')
+  console.log(chosenSortOption)
 
-   }
+  console.log('blues')
+  sOpt.addEventListener('click',
+  event =>{
+    let crew = event.target
+    let cat = crew.innerText
+    chosenSortOption = cat
+    console.log(cat)
+    console.log('between')
+    
+
+   })}
 
 function settingLevel() {
-    document.querySelector('.level').innerHTML = `
-    <label>
-          <select class="choice">
-            <option>ascending</option>
-            <option>descending</option>
-          </select>
-        </label>
-    `}
+  let setL = document.querySelector('.levels')
+  console.log(chosenSortOption)
+
+  console.log('collard greens')
+  setL.addEventListener('click',
+  event =>{
+    let crew = event.target
+    let cat = crew.innerText
+    ratioChoice = cat
+    console.log(cat)
+    console.log('between')
+
+    while(chosenSortOption != ''){
+    
+
+    if(chosenSortOption === 'price'){
+      console.log('boring')
+      books = sortedPrice(ratioChoice)}
+    else if(chosenSortOption === 'title'){books = sortedTitle(ratioChoice)}
+    else if(chosenSortOption === 'author'){books = sortedAuthor(ratioChoice)}
+    console.log('oranges in the chat')
+    displayBooks()
+    break
+  }
+
+    })}
 
 function shoppingCart() {
 
-
-document.querySelector('.shop').innerHTML = `
-<p>Shopping Cart</p>
-<div class="items"></div>
-<div class="final"></div>
-
-`
-document.querySelector('.shop').addEventListener(
+const cast = document.querySelector('.bring')
+console.log(cast);
+cast.addEventListener(
   'click',
   event => {
+    if(document.querySelector('.items').innerHTML==="" && document.querySelector('.final').innerHTML===""){
     if(cart.length === 0){
       document.querySelector('.items').innerHTML = `
       <hr/>
@@ -99,16 +157,22 @@ document.querySelector('.shop').addEventListener(
     }else{
        
       htmlArr = cart.map(({
-      titleP, priceP
+      titleP, priceP, quantity, rowSum
       }) => `
-        <p>${titleP} ${priceP} 1</p>
+        <p>${titleP} ${quantity} ${priceP}kr  ${rowSum}kr</p>
+        
+        
         <hr/>      
       `)
       document.querySelector('.items').innerHTML = htmlArr.join('')
       document.querySelector('.final').innerHTML = `
-      <p>Total: ${total}kr</p>
+      <p><span>Total:</span> ${total}kr</p>
       `
-    }})
+    }}else{
+      document.querySelector('.items').innerHTML="" 
+      document.querySelector('.final').innerHTML=""
+    }
+  })
 
     
   
@@ -116,13 +180,14 @@ document.querySelector('.shop').addEventListener(
        
 
     
-
+ 
   
 }
 
 
 function sortedPrice(ratioChoice){
   if(ratioChoice === 'ascending'){
+    console.log('blue')
   books.sort(({ price: aPrice }, { price: bPrice }) =>
   aPrice > bPrice ? 1 : -1)
   console.log(books)
@@ -164,53 +229,33 @@ function sortedAuthor(ratioChoice){
 
 }
 
- function filterEffect(){
-    if(chosencategoryFilter === 'all'){
-      books = forAll
-      displayBooks()
-      console.log("me")
-    }else if(chosencategoryFilter === 'UX' || chosencategoryFilter === 'CSS'
-    || chosencategoryFilter === 'HTML' || chosencategoryFilter === 'JavaScript'
-    ){
-      books = books.filter(({category}) => chosencategoryFilter === category)
-        
-        document.querySelector('.sortOption').addEventListener(
-          'change',
-          event => {
-            chosenSortOption = event.target.value;
-          console.log(chosenSortOption)
-          
-          //take it to its own function and sort
-        })
-        document.querySelector('.level').addEventListener(
-          'change',
-          event => {
-            ratioChoice = event.target.value;
-            if(chosenSortOption === 'price'){books = sortedPrice(ratioChoice)}
-           else if(chosenSortOption === 'title'){books = sortedTitle(ratioChoice)}
-           else if(chosenSortOption === 'author'){books = sortedAuthor(ratioChoice)}
-          console.log(ratioChoice)
-          
-          displayBooks()
+function filterEffect(){
+console.log(chosencategoryFilter)
+  if(chosencategoryFilter === 'all'){
+    books = forAll
+    displayBooks()
+    console.log("me")
+  }else if(chosencategoryFilter === 'UX' || chosencategoryFilter === 'CSS'
+  || chosencategoryFilter === 'HTML' || chosencategoryFilter === 'JavaScript'
+  ){
+    console.log('brew')
+    books = books.filter(({category}) => chosencategoryFilter === category)
+ 
+  displayBooks()
 
-        })
-        
-    }
+  }
     
  }
-//display all
 
-//making the filters
-
-//
 
 function displayBooks(){
 
-let htmlArray = books.map(({ title, author,price,description})=>
+let htmlArray = books.map(({ id,title, author,price,description})=>
 
 `
 <div class="book">
-<img class="book-img" src="https://source.unsplash.com/random/?wallpaper">
+
+<img class="book-img" src="/images/${id}.jpg">
 <div class="disc">
 <h3>${title}</h3>
 <p>${author}</p>
@@ -230,7 +275,7 @@ for (i = 0; i < x.length; i++) {
   x[i].style.display = "none";
 }
 
-//InfoDisplay()
+InfoDisplay()
 
 buying()
 }
@@ -239,24 +284,23 @@ buying()
 
 
 
-/*function InfoDisplay(){
+function InfoDisplay(){
  var view = document.querySelectorAll('.disc')
  for (let index = 0; index < view.length; index++) {
-  const element = array[index];
+  const element = view[index];
   element.addEventListener('click', event => {
     var toView = event.target
-    var view = toView.parentElement
-  if( document.querySelector('.info').
+    var infoD = toView.parentElement
+  if( infoD.querySelector('.info').
     style.display === "none"){
-      document.querySelector('.info').style.display = "block"
-      console.log( document.querySelectorAll('.info'))
+      infoD.querySelector('.info').style.display = "block"
       
     }else{
-      document.querySelector('.info').style.display = "none"
+      infoD.querySelector('.info').style.display = "none"
     }}
   )
   
- }}*/
+ }}
 
  
  
@@ -271,12 +315,10 @@ function buying(){
 
       var button = event.target
       var buyP = button.parentElement
-      console.log(button)
-      console.log(buyP)
+      
     
     
       var addTitle = buyP.querySelector('h3').innerText
-      console.log(addTitle)
       var twoValues = buyP.querySelectorAll('.disc p')
       var addAuthor = twoValues[0].innerText
       var addPrice = twoValues[1].innerText
@@ -285,14 +327,40 @@ function buying(){
       
   
       let purchase = {
+        quantity: 1,
         titleP: addTitle,
         authorP: addAuthor,
-        priceP: Number(p)
+        priceP: Number(p),
+        rowSum: Number(p)
       }
-  
-      cart.push(purchase)
-      console.log(purchase.priceP)
+
+
+    var inSide = false
+      
+    if(cart.length > 0){      
+
+      cart.forEach(element => {
+        if(element.titleP === purchase.titleP && element.authorP === purchase.authorP
+          && element.priceP === purchase.priceP){
+            element.quantity++ 
+            element.rowSum += element.priceP
+            inSide = true
+            console.log(inSide)
+          }})
+      if(inSide === false){
+        cart.push(purchase)
+      }
+      
+      console.log(inSide)
+    }else{
+        cart.push(purchase)
+      }
+
+      
+
       total += purchase.priceP
+
+  
       console.log(total)
   
       console.log(cart)
