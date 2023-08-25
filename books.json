@@ -1,36 +1,36 @@
 [
     {
       "id": 1,
-      "title": "Introduction to html ",
+      "title": "Responsive design with Bootstrap",
       "author": "John Author",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi iste quis quae? Ratione sunt mollitia possimus esse ex sapiente expedita quam quae, quod necessitatibus dolorem molestias aperiam modi rerum repudiandae!.",
-      "category": "HTML",
+      "description":"Bootstrap is a CSS framework that allows a developer to create responsive webpage. Bootstrap is not inbuilt in a project, it needs to be installed using the Node Package Manager (npm).Bootstrap saves time when it comes to adding responsive CSS to your page, for example when designing a navbar, it might take hours to design elements and to achieve the right amount of padding and margin between the elements within the navbar, adding dropdown menus, and many other intricate details to the navbar. An easy fix using bootstrap will be to copy a navbar component from the bootstrap website and insert into your html file and then you can make some modifications to suit exactly what you want. It is very easy to use when you understand the basics of html and CSS, and on the bootstrap website has easy to understand explanations to the code. Another advantage of using Bootstrap is the responsiveness of the features, the CSS in bootstrap allows for the adjustment of webpage according to the device, like mobile phones, tablets, and desktops. Bootstrap is also free to use, and it can be used in a lot of modern-day browsers like Chrome, Firefox, and Internet Explorer. In a bootstrap component, the container is the outermost div of the component, bootstrap has default grid system that can either be fixed-width or fluid-width. When a container is fluid-width, that means it spans the entire width of the viewport. When a container is fixed-width, the container changes at a max-width. The max-width is known as a responsive breakpoint, responsive breakpoints are a bootstrap feature that was created using media queries to create specific breakpoints based on the minimum viewport widths, and as the viewport widths increase or decrease, the elements on the scale up as well. These breakpoints are based on the screen widths of mobile phones, tablets, and desktop.",
+      "category": "CSS",
       "price": 110
     },
 
     {
         "id": 2,
-        "title": "Introduction to CSS",
+        "title": "HTML - an introduction",
         "author": "Some Alex",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi iste quis quae? Ratione sunt mollitia possimus esse ex sapiente expedita quam quae, quod necessitatibus dolorem molestias aperiam modi rerum repudiandae!",
-        "category": "CSS",
+        "description":"Html allows us to create the frontend of a website html is an abbreviation for Hyper Text Markup Language. The html is the foundation that is used to design the page. Elements are a vital part in html, and they are a type of html document component. An element has an opening tag and closing tag and within these tags is the content which will appear on the webpage. In the opening tags, attributes can be added, these attributes allow you to style the element in CSS. Html has different types of elements that can be used to divide and create sections on a page. An html file usually consists of a head and body element which are put within an html element. The head element can contain a title element which is the title of a page. The head element may contain other elements or data which usually are not part of the page, but are essential for example, the language that the text on the page is and the links of the CSS style sheets. The body element is where, the work takes place, this where we can add text pictures shapes and other elements that can be found on a webpage. The body element can also be divided into parts such as the header, the main and then the footer. The header is usually a navigation bar on for navigating the webpage, the main is where the main content of the webpage can be found and then the footer may contain contact info and address. Another important element that can be added in a body element is the script element which contains JavaScript code that may manipulate the other elements that appear on the webpage. There are elements that are p elements, which allows us to add text in the form of a paragraph, img element which are used to add images and then there are “a” elements that allow us to add links to the page.",
+        "category": "HTML",
         "price": 150
     },
 
     {
         "id": 3,
-        "title": "Introduction to JavaScript",
+        "title": "CSS - an introduction",
         "author": "Someil Creed",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi iste quis quae? Ratione sunt mollitia possimus esse ex sapiente expedita quam quae, quod necessitatibus dolorem molestias aperiam modi rerum repudiandae!",
-        "category": "JavaScript",
+        "description":"CSS is used to style the html elements. With CSS we can style and design the fonts, shapes add colour shadows and highlight the page. CSS can either be added on the html page within an html page, within an element called style, or they can be stored in CSS files, these files are simply files names with “.css” at the end. These files are then linked in the html page’s head element. The basic structure of a CSS statement starts with a selector and a declaration within a curly bracket. A selector is usually the name of an html element for example h1, button, p and many more. A selector can also be an attribute, an attribute can be found in the opening tag of an html element and the most commonly attribute that is used for a CSS selector is the class attribute’s value. The selector is used to select the element that the CSS declaration is targeting. Within the curly brackets we can find multiple declarations; we are properties and their values. Some common properties are font-size, bg-color which represents background color, and display. An important feature in CSS is the CSS box model. CSS box model is simply a box that wraps an html element. Margins, padding, borders, and content are what constitute the box model. The content which is usually text is surrounded by space called padding and padding is surrounded by borders and outside the borders is the margin. All of these can be increased or decreased in size in the unit of pixels, and the sides to which this is applied can be specified, like left, right, top and bottom. Another important feature in CSS is the position of elements on the page, element can be made to appear on top of another and vice versa. The position property can have one of the following values: static, relative, absolute, fixed and sticky.",
+        "category": "CSS",
         "price": 300
       },
 
       {
         "id": 4,
-        "title": "Book of Grandiose",
+        "title": "JavaScript - an introduction",
         "author": "Han Rew",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi iste quis quae? Ratione sunt mollitia possimus esse ex sapiente expedita quam quae, quod necessitatibus dolorem molestias aperiam modi rerum repudiandae!",
+        "description":"JavaScript is a programming language that uses an interpreter to. JavaScript can both be used in backend and frontend to build both web and mobile applications. Just like with many languages, in JavaScript, we can create variables, functions with and without return values, data structures such as arrays and objects, operators, values and the types they are. An important feature in JavaScript is the Document Object Model (DOM). DOM converts xml or html content into a tree structure. The elements are organized into nodes in a tree structure, in a hierarchical order based on how they appear in the html document. This conversion is done internally in memory, with the use of JavaScript these tree structures are easy to read and update. When navigating through these tree structures, there is the use of JavaScript functions like “document.body.getElementsByTagName” and “document.getElementById” to access elements in tree either by their tag names or Ids, then updates or changes can then be made to the elements. Another important feature in JavaScript is event handling, an event handler is an asynchronous call back routine that dictates what happens next after an event occurs. For example, a common element in an html document is a button, which is to be clicked and the clicking of the button is known as an event, usually clicking a button will lead to an action to be triggered on the webpage and this triggered action is known as the event handler. The only way to know that the button has been clicked is by adding an event listener to the button, which listens for the click event. To be able to add the event listener to the button, a query selector method is used to select the button, then the event listener is added. Other common events that are handled in a webpage are onload and on-unload event, these events are that occur when a webpage is visited or exited.",
         "category": "JavaScript",
         "price": 200
       },
@@ -85,7 +85,7 @@
           "title": "Book of Fun",
           "author": "Sohon King",
           "description": "It is very important for the customer to pay attention to the adipiscing process. Who is to be chosen? By reason, we can be more flexible than the wise. that I will open to the needs, the pain, the troubles, the ways of rejecting things!",
-          "category": "UX",
+          "category": "JavaScript",
           "price": 140
         },
         {
@@ -174,7 +174,7 @@
               "title": "Inside Oakland",
               "author": "Karri White",
               "description": "It is very important for the customer to pay attention to the adipiscing process. Who is to be chosen? By reason, we can be more flexible than the wise. that I will open to the needs, the pain, the troubles, the ways of rejecting things!",
-              "category": "UX",
+              "category": "HTML",
               "price": 140
             }
     

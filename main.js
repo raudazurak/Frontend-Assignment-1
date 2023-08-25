@@ -1,5 +1,4 @@
 import './style.css'
-import './style.scss'
 
 //import 'bootstrap'
 
@@ -56,15 +55,23 @@ async function showFooter(){
 
   function searchGrab(){
 
-    let finder = document.querySelector('.cherry').placeholder
-    console.log(finder)
-   let searcher =  document.querySelector('.btn-outline-success')
+    
+   // console.log(finder)
+   let searcher =  document.querySelector('.greek')
    searcher.addEventListener('click', 
    event =>{
+    //let finder = document.querySelector('.cherry').placeholder
+    console.log('buns')
     
-   })
+   while(finder != 'Search....'){
+    console.log('pink')
+    //books = books.filter(({category}) => chosencategoryFilter === category)
+
+    forAll = forAll.filter(({title}) => console.log(title)) 
+    break
+   }
   
-  }
+  })}
 
 function getCategories() {
     let withDuplicates = books.map(book => book.category);
